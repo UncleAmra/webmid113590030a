@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Sukhoi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar same as above -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="me.html">Me</a></li>
+        <li><a href="main.html">Pictures</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sukhoi.html">Sukhoi</a></li>
+        <li><a href="contact.html">Table</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Moon city </title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0; 
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            color: #333;
+            text-shadow: none;
+            margin-bottom: 5px;
+            font-size: 1.5em;
+        }
+        p {
+            color: #666;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        canvas {
+            border: 2px solid #333;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сартай</h1>
+    <p></p>
+    <canvas id="moonlightCanvas" width="800" height="450"></canvas>
+
+    <script>
+        const canvas = document.getElementById('moonlightCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawMoonlightCity() {
+            const width = canvas.width;
+            const height = canvas.height;
+
+            const skyColor = '#0B0E2A';
+            ctx.fillStyle = skyColor;
+            ctx.fillRect(0, 0, width, height);
+
+            const moonColor = '#F0E68C';
+            const moonX = 650;
+            const moonY = 100;
+            const moonRadius = 60;
+
+            ctx.beginPath();
+            ctx.arc(moonX, moonY, moonRadius, 0, Math.PI * 2, false);
+            ctx.fillStyle = moonColor;
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(moonX - 20, moonY - 10, moonRadius, 0, Math.PI * 2, false); 
+            ctx.fillStyle = skyColor;
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFFFFF';
+            function drawStar(x, y, size) {
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2, false);
+                ctx.fill();
+            }
+            drawStar(150, 70, 2);
+            drawStar(200, 50, 1.5);
+            drawStar(230, 100, 2);
+            drawStar(300, 80, 1.5);
+            drawStar(500, 60, 2);
+            drawStar(750, 150, 1.5);
+
+            const groundColor = '#191933';
+            const groundHeight = height * 0.25; 
+            const buildingBaseY = height - groundHeight;
+            ctx.fillStyle = groundColor;
+            ctx.fillRect(0, buildingBaseY, width, groundHeight);
+
+            const buildingColor = '#333366';
+            
+            ctx.fillStyle = buildingColor;
+            ctx.fillRect(100, buildingBaseY - 150, 100, 150); 
+            ctx.fillRect(220, buildingBaseY - 200, 100, 200);
+            ctx.fillRect(340, buildingBaseY - 250, 120, 250);
+            ctx.fillRect(480, buildingBaseY - 180, 100, 180);
+            ctx.fillRect(600, buildingBaseY - 230, 120, 230);
+
+            const windowColor = '#FFFF99';
+            const windowWidth = 12;
+            const windowHeight = 18;
+            ctx.fillStyle = windowColor;
+            ctx.shadowColor = windowColor;
+            ctx.shadowBlur = 4;
+
+            ctx.fillRect(340 + 20, buildingBaseY - 250 + 30, windowWidth, windowHeight);
+            ctx.fillRect(340 + 20, buildingBaseY - 250 + 80, windowWidth, windowHeight);
+            ctx.fillRect(600 + 30, buildingBaseY - 230 + 40, windowWidth, windowHeight);
+            ctx.fillRect(600 + 30, buildingBaseY - 230 + 100, windowWidth, windowHeight);
+            ctx.fillRect(600 + 70, buildingBaseY - 230 + 100, windowWidth, windowHeight);
+
+            ctx.shadowBlur = 0;
+        }
+
+        drawMoonlightCity();
+    </script>
+</body>
+</html>
+
+
+  <script src="style.js"></script>
+</body>
+</html>

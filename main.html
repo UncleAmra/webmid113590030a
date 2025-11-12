@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - Sukhoi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="me.html">Me</a></li>
+        <li><a href="main.html">Pictures</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sukhoi.html">Sukhoi</a></li>
+        <li><a href="contact.html">Table</a></li>
+      </ul>
+    </nav>
+  </header>
+
+ <script>
+document.addEventListener("DOMContentLoaded", () => {
+    // restore previously clicked links
+    const clicked = JSON.parse(localStorage.getItem("clickedLinks") || "[]");
+
+    document.querySelectorAll(".navbar a").forEach(link => {
+        if (clicked.includes(link.getAttribute("href"))) {
+            link.classList.add("clicked");
+        }
+
+        link.addEventListener("click", () => {
+            if (!clicked.includes(link.getAttribute("href"))) {
+                clicked.push(link.getAttribute("href"));
+                localStorage.setItem("clickedLinks", JSON.stringify(clicked));
+            }
+            link.classList.add("clicked");
+        });
+    });
+});
+</script>
+
+
+    <div class="gallery-container">
+        <h2>Pictures of Today</h2>
+
+        <div class="polaroid">
+            <img src="" alt="Gallery Image" id="galleryImage">
+        </div>
+
+        <div class="controls">
+            <button id="prevButton">&lt; Prev</button>
+            
+            <span id="imageCounter">Image 1 of 5</span>
+            
+            <button id="nextButton">Next &gt;</button>
+        </div>
+    </div>
+
+  <script src="style.js"></script>
+</body>
+</html>

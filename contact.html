@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sukhoi Jets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="me.html">Me</a></li>
+        <li><a href="main.html">Pictures</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sukhoi.html">Sukhoi</a></li>
+        <li><a href="contact.html">Table</a></li>
+      </ul>
+    </nav>
+  </header>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const clicked = JSON.parse(localStorage.getItem("clickedLinks") || "[]");
+
+    document.querySelectorAll(".navbar a").forEach(link => {
+        if (clicked.includes(link.getAttribute("href"))) {
+            link.classList.add("clicked");
+        }
+
+        link.addEventListener("click", () => {
+            if (!clicked.includes(link.getAttribute("href"))) {
+                clicked.push(link.getAttribute("href"));
+                localStorage.setItem("clickedLinks", JSON.stringify(clicked));
+            }
+            link.classList.add("clicked");
+        });
+    });
+});
+</script>
+
+<div class="table-board">
+    <h1>Task 1: Table Styler</h1>
+
+    <table id="mainTable">
+        <thead>
+            <tr>
+                <th>Network</th>
+                <th>Anglish</th>
+                <th>Programming</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>100</td>
+                <td>60</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>80</td>
+                <td>86</td>
+                <td>90</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <h3>Change The Table Width</h3>
+        <button id="setWidth200">200px</button>
+        <button id="setWidth500">500px</button>
+    </div>
+
+    <div>
+        <h3>Change The Border and the Spacing Width</h3>
+        <button id="setBorder1">1px</button>
+        <button id="setBorder10">10px</button>
+        <button id="setBorder20">20px</button>
+    </div>
+
+    <div>
+        <h3>Change The Table Color</h3>
+        <button id="colorGreen" class="color-swatch" data-color="#C8E6C9"></button>
+        <button id="colorBlue" class="color-swatch" data-color="#B3E5FC"></button>
+        <button id="colorPurple" class="color-swatch" data-color="#D1C4E9"></button>
+        <button id="colorOrange" class="color-swatch" data-color="#FFECB3"></button>
+    </div>
+
+    <button id="resetButton">Reset</button>
+</div>
+
+
+
+  <script src="style.js"></script>
+</body>
+</html>
